@@ -9,7 +9,7 @@ ui <- fluidPage(
    inputId = "purpose",
     label="Select Purpose",
     choice=unique(tourism$Purpose),
-   multiple = TRUE
+   multiple = FALSE
   ),
 plotOutput("plotted_series")
 )
@@ -19,8 +19,11 @@ server <- function(input, output, session) {
     
   })
   
- #make output for purpose
-  
+  output$purpose <- renderPrint({
+    if(input$purpose){
+      input$plotted_series
+    }
+  })
   
 }
 
