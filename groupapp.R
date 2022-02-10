@@ -6,17 +6,20 @@ data <- subset(tourism, Region=="Alice Springs")
 
 ui <- fluidPage(
   selectInput(
-    inputId = "region",
-    label="Select Region",
-    choice=unique(tourism$Region)
+   inputId = "purpose",
+    label="Select Purpose",
+    choice=unique(tourism$Purpose),
+   multiple = TRUE
   ),
 plotOutput("plotted_series")
 )
 
 server <- function(input, output, session) {
-  output$plotted_series <- renderPlot({
+  output$plotted_series <- renderPlot({ autoplot(data)
     
   })
+  
+ #make output for purpose
   
   
 }
