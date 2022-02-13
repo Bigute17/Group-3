@@ -15,7 +15,7 @@ plotOutput("plotted_series")
 )
 
 server <- function(input, output, session) {
-  output$plotted_series <- renderPlot({ autoplot(data)
+  output$plotted_series <- renderPlot({ autoplot(data[data$Purpose==input$purpose,])
     
   })
   
